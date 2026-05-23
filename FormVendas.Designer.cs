@@ -130,7 +130,7 @@
             dgvCarrinho.Columns.AddRange(new DataGridViewColumn[] { colProduto, colQuantidade, colValor, colSubtotal });
             dgvCarrinho.Location = new Point(12, 8);
             dgvCarrinho.Name = "dgvCarrinho";
-            dgvCarrinho.Size = new Size(289, 269);
+            dgvCarrinho.Size = new Size(307, 269);
             dgvCarrinho.TabIndex = 2;
             dgvCarrinho.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -183,6 +183,7 @@
             // 
             // txtNota
             // 
+            txtNota.Font = new Font("Cascadia Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNota.Location = new Point(325, 8);
             txtNota.Multiline = true;
             txtNota.Name = "txtNota";
