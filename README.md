@@ -37,6 +37,8 @@ O sistema permite:
 
 ### Criação do banco
 
+- root123
+
 ```sql
 CREATE DATABASE supermercado;
 
