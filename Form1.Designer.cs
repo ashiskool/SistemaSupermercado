@@ -72,7 +72,6 @@
             lblSubtitulo.Size = new Size(361, 20);
             lblSubtitulo.TabIndex = 1;
             lblSubtitulo.Text = "Cadastre, edite ou remova produtos do seu estoque";
-
             // 
             // lblCodigo
             // 
@@ -187,6 +186,7 @@
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.Size = new Size(629, 158);
             dgvProdutos.TabIndex = 14;
+            dgvProdutos.CellContentClick += dgvProdutos_CellContentClick;
             // 
             // btnCadastrar
             // 

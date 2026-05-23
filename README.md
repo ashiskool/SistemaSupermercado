@@ -8,6 +8,8 @@
 - MURILO HENRIQUE DA SILVA RAFAEL - RA: 924111139
 - TAYANE CRISTINA DOS SANTOS MAURICIO - RA: 923101903
 
+---
+
 ## Descrição do Sistema
 
 Sistema desktop desenvolvido em C# com Windows Forms para gerenciamento de supermercado.
@@ -21,13 +23,15 @@ O sistema permite:
 - Carrinho de compras
 - Emissão de nota simples
 
+---
+
 ## Tecnologias Utilizadas
 
 - C#
 - Windows Forms
 - MySQL
 - Visual Studio 2022
-
+---
 
 ## Banco de Dados
 

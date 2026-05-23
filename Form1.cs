@@ -294,5 +294,10 @@ namespace SistemaSupermercado
         {
             LimparCampos();
         }
+
+        private void dgvProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
