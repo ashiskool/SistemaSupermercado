@@ -264,5 +264,21 @@ namespace SistemaSupermercado
 
             tela.Show();
         }
+
+        private void btnTeste_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                Conexao.Abrir();
+
+                MessageBox.Show(
+                    "Conexao com o banco funcionando");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Erro na conexao: " + ex.Message);
+            }
+        }
     }
 }

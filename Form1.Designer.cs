@@ -47,6 +47,7 @@
             btnAtualizar = new Button();
             btnExcluir = new Button();
             btnVendas = new Button();
+            btnTeste = new Button();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
@@ -55,7 +56,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(233, 9);
+            lblTitulo.Location = new Point(27, 9);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(225, 30);
             lblTitulo.TabIndex = 0;
@@ -65,7 +66,7 @@
             // 
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSubtitulo.Location = new Point(162, 39);
+            lblSubtitulo.Location = new Point(27, 39);
             lblSubtitulo.Name = "lblSubtitulo";
             lblSubtitulo.Size = new Size(361, 20);
             lblSubtitulo.TabIndex = 1;
@@ -179,7 +180,7 @@
             // dgvProdutos
             // 
             dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProdutos.Location = new Point(22, 300);
+            dgvProdutos.Location = new Point(22, 293);
             dgvProdutos.Name = "dgvProdutos";
             dgvProdutos.Size = new Size(628, 158);
             dgvProdutos.TabIndex = 14;
@@ -226,7 +227,7 @@
             btnVendas.BackColor = Color.CornflowerBlue;
             btnVendas.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVendas.ForeColor = Color.White;
-            btnVendas.Location = new Point(670, 420);
+            btnVendas.Location = new Point(670, 388);
             btnVendas.Name = "btnVendas";
             btnVendas.Size = new Size(157, 34);
             btnVendas.TabIndex = 18;
@@ -234,11 +235,22 @@
             btnVendas.UseVisualStyleBackColor = false;
             btnVendas.Click += btnVendas_Click;
             // 
+            // btnTeste
+            // 
+            btnTeste.Location = new Point(670, 428);
+            btnTeste.Name = "btnTeste";
+            btnTeste.Size = new Size(157, 23);
+            btnTeste.TabIndex = 19;
+            btnTeste.Text = "Teste Conexão Banco";
+            btnTeste.UseVisualStyleBackColor = true;
+            btnTeste.Click += btnTeste_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(839, 466);
+            Controls.Add(btnTeste);
             Controls.Add(btnVendas);
             Controls.Add(btnExcluir);
             Controls.Add(btnAtualizar);
@@ -287,5 +299,6 @@
         private Button btnAtualizar;
         private Button btnExcluir;
         private Button btnVendas;
+        private Button btnTeste;
     }
 }
