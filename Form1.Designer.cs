@@ -48,6 +48,7 @@
             btnExcluir = new Button();
             btnVendas = new Button();
             btnTeste = new Button();
+            btnLimpar = new Button();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvProdutos).BeginInit();
             SuspendLayout();
@@ -56,7 +57,7 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(284, 9);
+            lblTitulo.Location = new Point(308, 9);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(225, 30);
             lblTitulo.TabIndex = 0;
@@ -71,6 +72,7 @@
             lblSubtitulo.Size = new Size(361, 20);
             lblSubtitulo.TabIndex = 1;
             lblSubtitulo.Text = "Cadastre, edite ou remova produtos do seu estoque";
+
             // 
             // lblCodigo
             // 
@@ -126,6 +128,7 @@
             // 
             txtCodigo.Location = new Point(200, 79);
             txtCodigo.Name = "txtCodigo";
+            txtCodigo.ReadOnly = true;
             txtCodigo.Size = new Size(148, 23);
             txtCodigo.TabIndex = 7;
             txtCodigo.TextChanged += txtCodigo_TextChanged;
@@ -155,7 +158,7 @@
             // 
             // txtPreco
             // 
-            txtPreco.Location = new Point(200, 188);
+            txtPreco.Location = new Point(201, 188);
             txtPreco.Name = "txtPreco";
             txtPreco.Size = new Size(148, 23);
             txtPreco.TabIndex = 11;
@@ -182,7 +185,7 @@
             dgvProdutos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProdutos.Location = new Point(22, 293);
             dgvProdutos.Name = "dgvProdutos";
-            dgvProdutos.Size = new Size(628, 158);
+            dgvProdutos.Size = new Size(629, 158);
             dgvProdutos.TabIndex = 14;
             // 
             // btnCadastrar
@@ -190,9 +193,9 @@
             btnCadastrar.BackColor = Color.MediumSeaGreen;
             btnCadastrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCadastrar.ForeColor = Color.White;
-            btnCadastrar.Location = new Point(27, 253);
+            btnCadastrar.Location = new Point(22, 253);
             btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(322, 34);
+            btnCadastrar.Size = new Size(326, 34);
             btnCadastrar.TabIndex = 15;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = false;
@@ -203,9 +206,9 @@
             btnAtualizar.BackColor = Color.FromArgb(255, 192, 128);
             btnAtualizar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAtualizar.ForeColor = Color.White;
-            btnAtualizar.Location = new Point(365, 253);
+            btnAtualizar.Location = new Point(349, 253);
             btnAtualizar.Name = "btnAtualizar";
-            btnAtualizar.Size = new Size(144, 34);
+            btnAtualizar.Size = new Size(100, 34);
             btnAtualizar.TabIndex = 16;
             btnAtualizar.Text = "Atualizar";
             btnAtualizar.UseVisualStyleBackColor = false;
@@ -215,9 +218,9 @@
             btnExcluir.BackColor = Color.FromArgb(255, 128, 128);
             btnExcluir.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExcluir.ForeColor = Color.White;
-            btnExcluir.Location = new Point(525, 253);
+            btnExcluir.Location = new Point(451, 253);
             btnExcluir.Name = "btnExcluir";
-            btnExcluir.Size = new Size(125, 34);
+            btnExcluir.Size = new Size(100, 34);
             btnExcluir.TabIndex = 17;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
@@ -245,11 +248,25 @@
             btnTeste.UseVisualStyleBackColor = true;
             btnTeste.Click += btnTeste_Click_1;
             // 
+            // btnLimpar
+            // 
+            btnLimpar.BackColor = Color.Gray;
+            btnLimpar.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLimpar.ForeColor = Color.White;
+            btnLimpar.Location = new Point(551, 253);
+            btnLimpar.Name = "btnLimpar";
+            btnLimpar.Size = new Size(100, 34);
+            btnLimpar.TabIndex = 20;
+            btnLimpar.Text = "Limpar";
+            btnLimpar.UseVisualStyleBackColor = false;
+            btnLimpar.Click += btnLimpar_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(839, 466);
+            Controls.Add(btnLimpar);
             Controls.Add(btnTeste);
             Controls.Add(btnVendas);
             Controls.Add(btnExcluir);
@@ -300,5 +317,6 @@
         private Button btnExcluir;
         private Button btnVendas;
         private Button btnTeste;
+        private Button btnLimpar;
     }
 }

@@ -125,11 +125,13 @@
             // dgvCarrinho
             // 
             dgvCarrinho.AllowUserToAddRows = false;
+            dgvCarrinho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCarrinho.BackgroundColor = SystemColors.ButtonFace;
             dgvCarrinho.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCarrinho.Columns.AddRange(new DataGridViewColumn[] { colProduto, colQuantidade, colValor, colSubtotal });
             dgvCarrinho.Location = new Point(12, 8);
             dgvCarrinho.Name = "dgvCarrinho";
+            dgvCarrinho.ReadOnly = true;
             dgvCarrinho.Size = new Size(307, 269);
             dgvCarrinho.TabIndex = 2;
             dgvCarrinho.CellContentClick += dataGridView1_CellContentClick;
@@ -138,22 +140,26 @@
             // 
             colProduto.HeaderText = "Produto";
             colProduto.Name = "colProduto";
+            colProduto.ReadOnly = true;
             colProduto.Resizable = DataGridViewTriState.True;
             // 
             // colQuantidade
             // 
             colQuantidade.HeaderText = "Quantidade";
             colQuantidade.Name = "colQuantidade";
+            colQuantidade.ReadOnly = true;
             // 
             // colValor
             // 
             colValor.HeaderText = "Valor";
             colValor.Name = "colValor";
+            colValor.ReadOnly = true;
             // 
             // colSubtotal
             // 
             colSubtotal.HeaderText = "Subtotal";
             colSubtotal.Name = "colSubtotal";
+            colSubtotal.ReadOnly = true;
             // 
             // lblTotal
             // 

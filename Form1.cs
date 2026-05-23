@@ -30,25 +30,13 @@ namespace SistemaSupermercado
             cmbCategoria.Items.Add("Limpeza");
             cmbCategoria.Items.Add("Higiene");
 
-            // Metodo responsavel por listar os produtos ao abrir o sistema
+            // Campo codigo somente leitura
+
+            txtCodigo.ReadOnly = true;
+
+            //  listar os produtos ao abrir o sistema
 
             ListarProdutos();
-        }
-
-        // TESTE DA CONEXAO COM O BANCO
-
-        private void btnTeste_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Conexao.Abrir();
-
-                MessageBox.Show("Conectado com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro: " + ex.Message);
-            }
         }
 
         // LISTAR PRODUTOS CADASTRADOS NO BANCO
@@ -67,6 +55,13 @@ namespace SistemaSupermercado
                 da.Fill(dt);
 
                 dgvProdutos.DataSource = dt;
+
+                // Ajusta automaticamente as colunas
+
+                dgvProdutos.AutoSizeColumnsMode =
+                    DataGridViewAutoSizeColumnsMode.Fill;
+
+                dgvProdutos.ReadOnly = true;
             }
             catch (Exception ex)
             {
@@ -125,6 +120,11 @@ namespace SistemaSupermercado
                     codigoSelecionado =
                         Convert.ToInt32(
                         dgvProdutos.CurrentRow.Cells["codigo"].Value);
+
+                    // Preenche o codigo automaticamente
+
+                    txtCodigo.Text =
+                        codigoSelecionado.ToString();
 
                     txtNome.Text =
                         dgvProdutos.CurrentRow.Cells["nome"].Value.ToString();
@@ -242,6 +242,8 @@ namespace SistemaSupermercado
 
         public void LimparCampos()
         {
+            txtCodigo.Clear();
+
             txtNome.Clear();
 
             cmbCategoria.SelectedIndex = -1;
@@ -258,13 +260,18 @@ namespace SistemaSupermercado
 
         }
 
+        // ABRIR TELA DE VENDAS
+
         private void btnVendas_Click(object sender, EventArgs e)
         {
             FormVendas tela = new FormVendas();
 
             tela.Show();
         }
-        // teste pra conexao com o banco, pode ser removido depois
+
+        // TESTE DA CONEXAO COM O BANCO - Pode ser excluido
+        // apenas para teste do banco antes de demais alterações
+
         private void btnTeste_Click_1(object sender, EventArgs e)
         {
             try
@@ -272,13 +279,20 @@ namespace SistemaSupermercado
                 Conexao.Abrir();
 
                 MessageBox.Show(
-                    "Conexao com o banco funcionando");
+                    "Conexao com o banco OK!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Erro na conexao: " + ex.Message);
             }
+        }
+
+        // botão limpar no form1 para cadastro de novo produto
+        // pode ser utilizado para limpar os campos caso queira cadastrar um novo produto sem atualizar ou excluir o selecionado
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
         }
     }
 }
