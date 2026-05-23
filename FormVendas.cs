@@ -125,44 +125,86 @@ namespace SistemaSupermercado
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            txtNota.Clear();
-
-            txtNota.AppendText("SUPERMERCADO\r\n");
-
-            txtNota.AppendText(
-                "Data: " +
-                DateTime.Now.ToString() +
-                "\r\n\r\n");
-
-            // Percorre todas as linhas do carrinho
-
-            for (int i = 0; i < dgvCarrinho.Rows.Count; i++)
+            try
             {
-                if (dgvCarrinho.Rows[i].Cells[0].Value != null)
+                txtNota.Clear();
+
+                txtNota.AppendText("SUPERMERCADO\r\n");
+
+                txtNota.AppendText(
+                    "Data: " +
+                    DateTime.Now.ToString() +
+                    "\r\n\r\n");
+
+                // Percorre todas as linhas do carrinho
+
+                for (int i = 0; i < dgvCarrinho.Rows.Count; i++)
                 {
-                    string produto =
-                        dgvCarrinho.Rows[i].Cells[0].Value.ToString();
+                    if (dgvCarrinho.Rows[i].Cells[0].Value != null)
+                    {
+                        string produto =
+                            dgvCarrinho.Rows[i].Cells[0].Value.ToString();
 
-                    string quantidade =
-                        dgvCarrinho.Rows[i].Cells[1].Value.ToString();
+                        string quantidade =
+                            dgvCarrinho.Rows[i].Cells[1].Value.ToString();
 
-                    string subtotal =
-                        dgvCarrinho.Rows[i].Cells[3].Value.ToString();
+                        string subtotal =
+                            dgvCarrinho.Rows[i].Cells[3].Value.ToString();
 
-                    txtNota.AppendText(
-                        produto + " | Qtd: " +
-                        quantidade +
-                        " | Subtotal: R$ " +
-                        subtotal +
-                        "\r\n");
+                        // Exibe na nota
+
+                        txtNota.AppendText(
+                            produto + " | Qtd: " +
+                            quantidade +
+                            " | Subtotal: R$ " +
+                            subtotal +
+                            "\r\n");
+
+                        // DIMINUIR ESTOQUE NO BANCO
+
+                        string sqlEstoque =
+                            "UPDATE produtos " +
+                            "SET quantidade = quantidade - @quantidade " +
+                            "WHERE nome = @nome";
+
+                        MySqlCommand cmdEstoque =
+                            new MySqlCommand(sqlEstoque, Conexao.Abrir());
+
+                        cmdEstoque.Parameters.AddWithValue(
+                            "@quantidade",
+                            Convert.ToInt32(quantidade));
+
+                        cmdEstoque.Parameters.AddWithValue(
+                            "@nome",
+                            produto);
+
+                        cmdEstoque.ExecuteNonQuery();
+                    }
                 }
+
+                txtNota.AppendText("\r\n");
+
+                txtNota.AppendText(
+                    "TOTAL DA COMPRA: R$ " +
+                    totalCompra.ToString("F2"));
+
+                MessageBox.Show(
+                    "Compra finalizada com sucesso!");
+
+                // Limpa carrinho apos finalizar
+
+                dgvCarrinho.Rows.Clear();
+
+                totalCompra = 0;
+
+                lblTotal.Text = "Total: R$ 0,00";
             }
-
-            txtNota.AppendText("\r\n");
-
-            txtNota.AppendText(
-                "TOTAL DA COMPRA: R$ " +
-                totalCompra.ToString("F2"));
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Erro ao finalizar compra: " +
+                    ex.Message);
+            }
         }
     }
 }

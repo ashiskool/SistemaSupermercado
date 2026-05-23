@@ -264,7 +264,7 @@ namespace SistemaSupermercado
 
             tela.Show();
         }
-
+        // teste pra conexao com o banco, pode ser removido depois
         private void btnTeste_Click_1(object sender, EventArgs e)
         {
             try

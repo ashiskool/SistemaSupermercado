@@ -184,10 +184,10 @@
             // txtNota
             // 
             txtNota.Font = new Font("Cascadia Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNota.Location = new Point(325, 8);
+            txtNota.Location = new Point(334, 8);
             txtNota.Multiline = true;
             txtNota.Name = "txtNota";
-            txtNota.Size = new Size(323, 269);
+            txtNota.Size = new Size(323, 320);
             txtNota.TabIndex = 6;
             // 
             // FormVendas
