@@ -54,6 +54,9 @@ CREATE TABLE produtos (
 );
 ```
 
+ALTER TABLE produtos 
+ADD COLUMN Imagem VARCHAR(255);
+
 ---
 
 ## Como Executar o Projeto

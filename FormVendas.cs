@@ -127,14 +127,17 @@ namespace SistemaSupermercado
         {
             try
             {
-                txtNota.Clear();
+                string nota = "";
 
-                txtNota.AppendText("SUPERMERCADO\r\n");
+                nota += "SUPERMERCADO";
+                nota += Environment.NewLine;
 
-                txtNota.AppendText(
+                nota +=
                     "Data: " +
-                    DateTime.Now.ToString() +
-                    "\r\n\r\n");
+                    DateTime.Now.ToString();
+
+                nota += Environment.NewLine;
+                nota += Environment.NewLine;
 
                 // Percorre todas as linhas do carrinho
 
@@ -151,14 +154,15 @@ namespace SistemaSupermercado
                         string subtotal =
                             dgvCarrinho.Rows[i].Cells[3].Value.ToString();
 
-                        // Exibe na nota
+                        // Adiciona item na nota
 
-                        txtNota.AppendText(
-                            produto + " | Qtd: " +
-                            quantidade +
-                            " | Subtotal: R$ " +
-                            subtotal +
-                            "\r\n");
+                        nota +=
+                        produto +
+                        " | Qtd: " +
+                        quantidade +
+                        " | Subtotal: R$ " +
+                        subtotal +
+                        Environment.NewLine;
 
                         // DIMINUIR ESTOQUE NO BANCO
 
@@ -182,16 +186,23 @@ namespace SistemaSupermercado
                     }
                 }
 
-                txtNota.AppendText("\r\n");
+                nota += Environment.NewLine;
 
-                txtNota.AppendText(
+                nota +=
                     "TOTAL DA COMPRA: R$ " +
-                    totalCompra.ToString("F2"));
+                    totalCompra.ToString("F2");
+
+                // ABRIR TELA DA NOTA
+
+                FormNota telaNota =
+                    new FormNota(nota);
+
+                telaNota.ShowDialog();
 
                 MessageBox.Show(
                     "Compra finalizada com sucesso!");
 
-                // Limpa carrinho apos finalizar
+                // Limpa carrinho
 
                 dgvCarrinho.Rows.Clear();
 
@@ -205,6 +216,17 @@ namespace SistemaSupermercado
                     "Erro ao finalizar compra: " +
                     ex.Message);
             }
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            dgvCarrinho.Rows.Clear();
+
+            lblTotal.Text = "0,00";
+
+            txtNota.Clear();
+
+            totalCompra = 0;
         }
     }
 }

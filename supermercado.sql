@@ -11,3 +11,6 @@ CREATE TABLE produtos (
     dataCadastro DATE
 );
 SELECT * FROM produtos;
+
+ALTER TABLE produtos 
+ADD COLUMN Imagem VARCHAR(255);
