@@ -1,6 +1,7 @@
 # Sistema de Supermercado — CRUD, Compras e Emissão de Nota
 
 ## Integrantes
+
 - AISHA MARCELE DE CARVALHO NICIOLI - RA: 923102713
 - BRUNA FRAGA - RA: 922200048
 - FELIPE FEITOZA SILVA - RA: 923102713
@@ -10,7 +11,7 @@
 
 ---
 
-## Descrição do Sistema
+# Descrição do Sistema
 
 Sistema desktop desenvolvido em C# com Windows Forms para gerenciamento de supermercado.
 
@@ -28,7 +29,7 @@ O sistema permite:
 
 ---
 
-## Tecnologias Utilizadas
+# Tecnologias Utilizadas
 
 - C#
 - Windows Forms
@@ -36,20 +37,25 @@ O sistema permite:
 - Visual Studio 2022
 - .NET Framework 4.8
 
+---
+
 # Estrutura do Projeto
 
 - FormCadastro → gerenciamento de produtos
 - FormVendas → tela de vendas e carrinho
 - FormNota → emissão da nota da compra
 - Conexao.cs → conexão com banco de dados
+
 ---
 
-## Banco de Dados
+# Banco de Dados
 
-### Criação do banco
-Usuário padrão do MySQL:
+## Usuário padrão do MySQL
+
 - Usuário: root
 - Senha: root123
+
+## Criação do banco
 
 ```sql
 CREATE DATABASE supermercado;
@@ -64,11 +70,10 @@ CREATE TABLE produtos (
     preco DECIMAL(10,2),
     dataCadastro DATE,
     imagem VARCHAR(255)
-
 );
+```
 
 ---
-
 
 # String de Conexão
 
@@ -79,16 +84,18 @@ uid=root;
 pwd=root123;
 ```
 
-## Como Executar o Projeto
+---
+
+# Como Executar o Projeto
 
 1. Abrir o projeto no Visual Studio
 2. Executar o script SQL no MySQL
-3. Verificar a string de conexão
+3. Verificar a string de conexão no arquivo Conexao.cs
 4. Executar o sistema
 
 ---
 
-## Funcionalidades
+# Funcionalidades
 
 - CRUD completo de produtos
 - Integração com banco de dados
@@ -111,7 +118,7 @@ Caso algum botão ou componente não funcione:
 3. Clique no ícone de raio (Eventos)
 4. Verifique se o evento está vinculado corretamente
 
-Exemplos:
+## Exemplos de eventos
 
 - Click → btnCadastrar_Click
 - Click → btnExcluir_Click
@@ -126,5 +133,20 @@ Caso o campo esteja vazio, basta selecionar novamente a função correspondente.
 
 ---
 
-## Observações
+# Conteúdos da Disciplina Aplicados
+
+- Estrutura de programas em C#
+- Declaração de variáveis
+- Operadores lógicos
+- Estruturas condicionais
+- Estruturas de repetição
+- Criação de métodos e funções
+- Manipulação de componentes Windows Forms
+- Integração com banco de dados
+- Operações CRUD
+
+---
+
+# Observações
+
 Projeto desenvolvido para fins acadêmicos.
