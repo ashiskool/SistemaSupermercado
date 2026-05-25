@@ -32,6 +32,7 @@
             btnCadastro = new FontAwesome.Sharp.IconButton();
             btnCompras = new FontAwesome.Sharp.IconButton();
             panelMenu = new Panel();
+            btnSair = new FontAwesome.Sharp.IconButton();
             panelConteudo = new Panel();
             panelMenu.SuspendLayout();
             SuspendLayout();
@@ -42,9 +43,10 @@
             panelLogo.BackgroundImage = Properties.Resources._5766127_supermercado_loja_logo_vetor;
             panelLogo.BackgroundImageLayout = ImageLayout.Zoom;
             panelLogo.Dock = DockStyle.Top;
+            panelLogo.ForeColor = Color.Transparent;
             panelLogo.Location = new Point(0, 0);
             panelLogo.Name = "panelLogo";
-            panelLogo.Size = new Size(143, 150);
+            panelLogo.Size = new Size(143, 140);
             panelLogo.TabIndex = 1;
             panelLogo.Paint += panelLogo_Paint;
             // 
@@ -60,7 +62,7 @@
             btnCadastro.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCadastro.IconSize = 32;
             btnCadastro.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCadastro.Location = new Point(0, 150);
+            btnCadastro.Location = new Point(0, 140);
             btnCadastro.Name = "btnCadastro";
             btnCadastro.Size = new Size(143, 45);
             btnCadastro.TabIndex = 2;
@@ -82,7 +84,7 @@
             btnCompras.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCompras.IconSize = 32;
             btnCompras.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCompras.Location = new Point(0, 195);
+            btnCompras.Location = new Point(0, 185);
             btnCompras.Name = "btnCompras";
             btnCompras.Size = new Size(143, 45);
             btnCompras.TabIndex = 3;
@@ -95,6 +97,7 @@
             // panelMenu
             // 
             panelMenu.BackColor = Color.FromArgb(255, 128, 0);
+            panelMenu.Controls.Add(btnSair);
             panelMenu.Controls.Add(btnCompras);
             panelMenu.Controls.Add(btnCadastro);
             panelMenu.Controls.Add(panelLogo);
@@ -103,6 +106,28 @@
             panelMenu.Name = "panelMenu";
             panelMenu.Size = new Size(143, 514);
             panelMenu.TabIndex = 21;
+            // 
+            // btnSair
+            // 
+            btnSair.Dock = DockStyle.Top;
+            btnSair.FlatAppearance.BorderSize = 0;
+            btnSair.FlatStyle = FlatStyle.Flat;
+            btnSair.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            btnSair.ForeColor = Color.WhiteSmoke;
+            btnSair.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnSair.IconColor = Color.White;
+            btnSair.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSair.IconSize = 32;
+            btnSair.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSair.Location = new Point(0, 230);
+            btnSair.Name = "btnSair";
+            btnSair.Size = new Size(143, 45);
+            btnSair.TabIndex = 4;
+            btnSair.Text = "Sair";
+            btnSair.TextAlign = ContentAlignment.MiddleLeft;
+            btnSair.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSair.UseVisualStyleBackColor = true;
+            btnSair.Click += btnSair_Click;
             // 
             // panelConteudo
             // 
@@ -135,5 +160,6 @@
         private FontAwesome.Sharp.IconButton btnCompras;
         private Panel panelMenu;
         private Panel panelConteudo;
+        private FontAwesome.Sharp.IconButton btnSair;
     }
 }

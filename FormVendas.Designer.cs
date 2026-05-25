@@ -38,20 +38,21 @@
             lblProduto = new Label();
             conexaoBindingSource = new BindingSource(components);
             dgvCarrinho = new DataGridView();
-            conexaoBindingSource1 = new BindingSource(components);
-            lblTotal = new Label();
-            btnFinalizar = new Button();
-            txtNota = new TextBox();
-            lblTituloVenda = new Label();
             colProduto = new DataGridViewTextBoxColumn();
             colQuantidade = new DataGridViewTextBoxColumn();
             colValor = new DataGridViewTextBoxColumn();
             colSubtotal = new DataGridViewTextBoxColumn();
+            conexaoBindingSource1 = new BindingSource(components);
+            lblTotal = new Label();
+            btnFinalizar = new Button();
+            lblTituloVenda = new Label();
+            pbProduto = new PictureBox();
             gboxAddCarrinho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)conexaoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarrinho).BeginInit();
             ((System.ComponentModel.ISupportInitialize)conexaoBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbProduto).BeginInit();
             SuspendLayout();
             // 
             // cmbProdutos
@@ -61,6 +62,7 @@
             cmbProdutos.Name = "cmbProdutos";
             cmbProdutos.Size = new Size(281, 28);
             cmbProdutos.TabIndex = 0;
+            cmbProdutos.SelectedIndexChanged += cmbProdutos_SelectedIndexChanged;
             // 
             // gboxAddCarrinho
             // 
@@ -155,6 +157,34 @@
             dgvCarrinho.TabIndex = 2;
             dgvCarrinho.CellContentClick += dataGridView1_CellContentClick;
             // 
+            // colProduto
+            // 
+            colProduto.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            colProduto.Frozen = true;
+            colProduto.HeaderText = "Produto";
+            colProduto.Name = "colProduto";
+            colProduto.ReadOnly = true;
+            colProduto.Resizable = DataGridViewTriState.True;
+            colProduto.Width = 53;
+            // 
+            // colQuantidade
+            // 
+            colQuantidade.HeaderText = "Quantidade";
+            colQuantidade.Name = "colQuantidade";
+            colQuantidade.ReadOnly = true;
+            // 
+            // colValor
+            // 
+            colValor.HeaderText = "Valor";
+            colValor.Name = "colValor";
+            colValor.ReadOnly = true;
+            // 
+            // colSubtotal
+            // 
+            colSubtotal.HeaderText = "Subtotal";
+            colSubtotal.Name = "colSubtotal";
+            colSubtotal.ReadOnly = true;
+            // 
             // conexaoBindingSource1
             // 
             conexaoBindingSource1.DataSource = typeof(Conexao);
@@ -185,15 +215,6 @@
             btnFinalizar.UseVisualStyleBackColor = false;
             btnFinalizar.Click += btnFinalizar_Click;
             // 
-            // txtNota
-            // 
-            txtNota.Font = new Font("Cascadia Code", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNota.Location = new Point(324, 48);
-            txtNota.Multiline = true;
-            txtNota.Name = "txtNota";
-            txtNota.Size = new Size(323, 320);
-            txtNota.TabIndex = 6;
-            // 
             // lblTituloVenda
             // 
             lblTituloVenda.AutoSize = true;
@@ -204,41 +225,25 @@
             lblTituloVenda.TabIndex = 27;
             lblTituloVenda.Text = "Pedido de Venda";
             // 
-            // colProduto
+            // pbProduto
             // 
-            colProduto.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            colProduto.Frozen = true;
-            colProduto.HeaderText = "Produto";
-            colProduto.Name = "colProduto";
-            colProduto.ReadOnly = true;
-            colProduto.Resizable = DataGridViewTriState.True;
-            colProduto.Width = 53;
-            // 
-            // colQuantidade
-            // 
-            colQuantidade.HeaderText = "Quantidade";
-            colQuantidade.Name = "colQuantidade";
-            colQuantidade.ReadOnly = true;
-            // 
-            // colValor
-            // 
-            colValor.HeaderText = "Valor";
-            colValor.Name = "colValor";
-            colValor.ReadOnly = true;
-            // 
-            // colSubtotal
-            // 
-            colSubtotal.HeaderText = "Subtotal";
-            colSubtotal.Name = "colSubtotal";
-            colSubtotal.ReadOnly = true;
+            pbProduto.BackColor = Color.White;
+            pbProduto.BorderStyle = BorderStyle.FixedSingle;
+            pbProduto.Location = new Point(335, 48);
+            pbProduto.Name = "pbProduto";
+            pbProduto.Size = new Size(303, 205);
+            pbProduto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbProduto.TabIndex = 28;
+            pbProduto.TabStop = false;
+            pbProduto.Click += pbProduto_Click;
             // 
             // FormVendas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(655, 472);
+            Controls.Add(pbProduto);
             Controls.Add(lblTituloVenda);
-            Controls.Add(txtNota);
             Controls.Add(btnFinalizar);
             Controls.Add(lblTotal);
             Controls.Add(dgvCarrinho);
@@ -252,6 +257,7 @@
             ((System.ComponentModel.ISupportInitialize)conexaoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarrinho).EndInit();
             ((System.ComponentModel.ISupportInitialize)conexaoBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbProduto).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -268,7 +274,6 @@
         private DataGridView dgvCarrinho;
         private Label lblTotal;
         private Button btnFinalizar;
-        private TextBox txtNota;
         private Label lblTituloVenda;
         private Button btnLimpar;
         private BindingSource conexaoBindingSource1;
@@ -277,5 +282,6 @@
         private DataGridViewTextBoxColumn colQuantidade;
         private DataGridViewTextBoxColumn colValor;
         private DataGridViewTextBoxColumn colSubtotal;
+        private PictureBox pbProduto;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using System.IO;
 
 namespace SistemaSupermercado
 {
@@ -224,9 +225,66 @@ namespace SistemaSupermercado
 
             lblTotal.Text = "0,00";
 
-            txtNota.Clear();
 
             totalCompra = 0;
+        }
+
+        private void pbProduto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbProdutos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string sql =
+                    "SELECT imagem FROM produtos " +
+                    "WHERE nome=@nome";
+
+                MySqlCommand cmd =
+                    new MySqlCommand(sql, Conexao.Abrir());
+
+                cmd.Parameters.AddWithValue(
+                    "@nome",
+                    cmbProdutos.Text);
+
+                MySqlDataReader reader =
+                    cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    string nomeImagem =
+                        reader["imagem"].ToString();
+
+                    string caminhoImagem =
+                        Path.Combine(
+                            Application.StartupPath,
+                            "ImagensProdutos",
+                            nomeImagem);
+
+                    if (File.Exists(caminhoImagem))
+                    {
+                        pbProduto.Image =
+                            Image.FromFile(caminhoImagem);
+
+                        pbProduto.SizeMode =
+                            PictureBoxSizeMode.StretchImage;
+                    }
+                    else
+                    {
+                        pbProduto.Image = null;
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Erro ao carregar imagem: " +
+                    ex.Message);
+            }
         }
     }
 }
