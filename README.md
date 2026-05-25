@@ -133,20 +133,6 @@ Caso o campo esteja vazio, basta selecionar novamente a função correspondente.
 
 ---
 
-# Conteúdos da Disciplina Aplicados
-
-- Estrutura de programas em C#
-- Declaração de variáveis
-- Operadores lógicos
-- Estruturas condicionais
-- Estruturas de repetição
-- Criação de métodos e funções
-- Manipulação de componentes Windows Forms
-- Integração com banco de dados
-- Operações CRUD
-
----
-
 # Observações
 
 Projeto desenvolvido para fins acadêmicos.
