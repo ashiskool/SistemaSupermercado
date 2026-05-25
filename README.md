@@ -52,10 +52,10 @@ CREATE TABLE produtos (
     preco DECIMAL(10,2),
     dataCadastro DATE
 );
-```
 
 ALTER TABLE produtos 
-ADD COLUMN Imagem VARCHAR(255);
+ADD COLUMN IMAGEM VARCHAR(255);
+```
 
 ---
 
