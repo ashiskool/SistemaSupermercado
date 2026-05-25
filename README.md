@@ -15,13 +15,16 @@
 Sistema desktop desenvolvido em C# com Windows Forms para gerenciamento de supermercado.
 
 O sistema permite:
+
 - Cadastro de produtos
 - Atualização de produtos
 - Exclusão de produtos
 - Listagem de produtos
 - Registro de vendas
 - Carrinho de compras
-- Emissão de nota simples
+- Emissão de nota fiscal simples
+- Controle automático de estoque
+- Cadastro de imagens dos produtos
 
 ---
 
@@ -31,13 +34,22 @@ O sistema permite:
 - Windows Forms
 - MySQL
 - Visual Studio 2022
+- .NET Framework 4.8
+
+# Estrutura do Projeto
+
+- FormCadastro → gerenciamento de produtos
+- FormVendas → tela de vendas e carrinho
+- FormNota → emissão da nota da compra
+- Conexao.cs → conexão com banco de dados
 ---
 
 ## Banco de Dados
 
 ### Criação do banco
-
-- root123
+Usuário padrão do MySQL:
+- Usuário: root
+- Senha: root123
 
 ```sql
 CREATE DATABASE supermercado;
@@ -59,6 +71,16 @@ ADD COLUMN IMAGEM VARCHAR(255);
 
 ---
 
+
+# String de Conexão
+
+```csharp
+server=localhost;
+database=supermercado;
+uid=root;
+pwd=root123;
+```
+
 ## Como Executar o Projeto
 
 1. Abrir o projeto no Visual Studio
@@ -74,7 +96,9 @@ ADD COLUMN IMAGEM VARCHAR(255);
 - Integração com banco de dados
 - Tela de vendas
 - Carrinho de compras
-- Nota simples da compra
+- Nota fiscal simples
+- Atualização automática do estoque
+- Upload de imagens dos produtos
 
 ---
 
