@@ -102,6 +102,31 @@ pwd=root123;
 
 ---
 
-## Observações
+# Possíveis Problemas
 
+Em alguns casos, o Visual Studio pode perder automaticamente os eventos dos componentes do Windows Forms.
+
+Caso algum botão ou componente não funcione:
+
+1. Selecione o componente no Designer
+2. Abra a aba de propriedades
+3. Clique no ícone de raio (Eventos)
+4. Verifique se o evento está vinculado corretamente
+
+Exemplos:
+
+- Click → btnCadastrar_Click
+- Click → btnExcluir_Click
+- Click → btnAtualizar_Click
+- Click → btnFinalizar_Click
+- SelectedIndexChanged → cmbProdutos_SelectedIndexChanged
+- CellClick → dgvProdutos_CellClick
+
+O evento `cmbProdutos_SelectedIndexChanged` é responsável por atualizar automaticamente a imagem do produto selecionado no PictureBox da tela de vendas.
+
+Caso o campo esteja vazio, basta selecionar novamente a função correspondente.
+
+---
+
+## Observações
 Projeto desenvolvido para fins acadêmicos.
