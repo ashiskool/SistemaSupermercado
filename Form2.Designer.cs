@@ -78,9 +78,10 @@
             // 
             // pbProduto
             // 
-            pbProduto.Location = new Point(364, 74);
+            pbProduto.BackColor = Color.White;
+            pbProduto.Location = new Point(345, 62);
             pbProduto.Name = "pbProduto";
-            pbProduto.Size = new Size(272, 144);
+            pbProduto.Size = new Size(291, 156);
             pbProduto.SizeMode = PictureBoxSizeMode.Zoom;
             pbProduto.TabIndex = 46;
             pbProduto.TabStop = false;
