@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
 
-
 namespace SistemaSupermercado
 {
     public partial class FormCadastro : Form
@@ -9,9 +8,19 @@ namespace SistemaSupermercado
         // Variavel utilizada para armazenar o codigo do produto selecionado
 
         int codigoSelecionado = 0;
+
+        string[] categorias =
+        {
+            "Alimentos",
+            "Bebidas",
+            "Limpeza",
+            "Higiene"
+        };
+
         public FormCadastro()
         {
             InitializeComponent();
+
             // EVENTOS DO DATAGRIDVIEW E DOS BOTOES
 
             dgvProdutos.CellClick += dgvProdutos_CellClick;
@@ -24,16 +33,16 @@ namespace SistemaSupermercado
 
             // Itens adicionados manualmente no ComboBox de categorias
 
-            cmbCategoria.Items.Add("Alimentos");
-            cmbCategoria.Items.Add("Bebidas");
-            cmbCategoria.Items.Add("Limpeza");
-            cmbCategoria.Items.Add("Higiene");
+            foreach (string categoria in categorias)
+            {
+                cmbCategoria.Items.Add(categoria);
+            }
 
             // Campo codigo somente leitura
 
             txtCodigo.ReadOnly = true;
 
-            //  listar os produtos ao abrir o sistema
+            // listar os produtos
 
             ListarProdutos();
         }
@@ -68,11 +77,42 @@ namespace SistemaSupermercado
             }
         }
 
-        // EVENTO DO COMBOBOX
+        // EVENTO DO COMBOBOX das categorias dos alimentos, possivel adicionar novas 
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            switch (cmbCategoria.Text)
+            {
+                case "Alimentos":
+                    MessageBox.Show(
+                        "Categoria Alimentos selecionada");
+                    break;
 
+                case "Bebidas":
+                    MessageBox.Show(
+                        "Categoria Bebidas selecionada");
+                    break;
+
+                case "Limpeza":
+                    MessageBox.Show(
+                        "Categoria Limpeza selecionada");
+                    break;
+
+                case "Higiene":
+                    MessageBox.Show(
+                        "Categoria Higiene selecionada");
+                    break;
+
+                case "Pet":
+                    MessageBox.Show(
+                        "Categoria Pet selecionada");
+                    break;
+
+                default:
+                    MessageBox.Show(
+                        "Categoria nao identificada");
+                    break;
+            }
         }
 
         // CADASTRAR PRODUTO
@@ -81,48 +121,60 @@ namespace SistemaSupermercado
         {
             try
             {
-
                 string nomeArquivoImagem = "";
 
                 if (!string.IsNullOrEmpty(caminhoImagemSelecionada))
                 {
-
-                    string pastaDestino = Path.Combine(Application.StartupPath, "ImagensProdutos");
-
+                    string pastaDestino =
+                        Path.Combine(
+                            Application.StartupPath,
+                            "ImagensProdutos");
 
                     if (!Directory.Exists(pastaDestino))
                     {
                         Directory.CreateDirectory(pastaDestino);
                     }
 
-                    nomeArquivoImagem = txtNome.Text.Replace(" ", "_") + Path.GetExtension(caminhoImagemSelecionada);
-                    string caminhoFinal = Path.Combine(pastaDestino, nomeArquivoImagem);
+                    nomeArquivoImagem =
+                        txtNome.Text.Replace(" ", "_") +
+                        Path.GetExtension(caminhoImagemSelecionada);
 
+                    string caminhoFinal =
+                        Path.Combine(
+                            pastaDestino,
+                            nomeArquivoImagem);
 
-                    File.Copy(caminhoImagemSelecionada, caminhoFinal, true);
+                    File.Copy(
+                        caminhoImagemSelecionada,
+                        caminhoFinal,
+                        true);
                 }
 
                 string sql = "INSERT INTO produtos " +
                              "(nome, categoria, quantidade, preco, dataCadastro, imagem) " +
                              "VALUES (@nome, @categoria, @quantidade, @preco, @data, @imagem)";
 
-                MySqlCommand cmd = new MySqlCommand(sql, Conexao.Abrir());
+                MySqlCommand cmd =
+                    new MySqlCommand(sql, Conexao.Abrir());
 
                 cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+
                 cmd.Parameters.AddWithValue("@categoria", cmbCategoria.Text);
+
                 cmd.Parameters.AddWithValue("@quantidade", numQuantidade.Value);
+
                 cmd.Parameters.AddWithValue("@preco", txtPreco.Text);
+
                 cmd.Parameters.AddWithValue("@data", dtpCadastro.Value);
 
-
                 cmd.Parameters.AddWithValue("@imagem", nomeArquivoImagem);
-
 
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show("Produto cadastrado com sucesso!");
 
                 ListarProdutos();
+
                 LimparCampos();
 
                 caminhoImagemSelecionada = "";
@@ -166,6 +218,27 @@ namespace SistemaSupermercado
                     dtpCadastro.Value =
                         Convert.ToDateTime(
                         dgvProdutos.CurrentRow.Cells["dataCadastro"].Value);
+
+                    // CARREGAR IMAGEM DO PRODUTO
+
+                    string nomeImagem =
+                        dgvProdutos.CurrentRow.Cells["imagem"].Value.ToString();
+
+                    string caminhoImagem =
+                        Path.Combine(
+                            Application.StartupPath,
+                            "ImagensProdutos",
+                            nomeImagem);
+
+                    if (File.Exists(caminhoImagem))
+                    {
+                        pbProduto.Image =
+                            Image.FromFile(caminhoImagem);
+                    }
+                    else
+                    {
+                        pbProduto.Image = null;
+                    }
                 }
             }
             catch (Exception ex)
@@ -198,10 +271,15 @@ namespace SistemaSupermercado
                     new MySqlCommand(sql, Conexao.Abrir());
 
                 cmd.Parameters.AddWithValue("@codigo", codigoSelecionado);
+
                 cmd.Parameters.AddWithValue("@nome", txtNome.Text);
+
                 cmd.Parameters.AddWithValue("@categoria", cmbCategoria.Text);
+
                 cmd.Parameters.AddWithValue("@quantidade", numQuantidade.Value);
+
                 cmd.Parameters.AddWithValue("@preco", txtPreco.Text);
+
                 cmd.Parameters.AddWithValue("@data", dtpCadastro.Value);
 
                 cmd.ExecuteNonQuery();
@@ -245,7 +323,9 @@ namespace SistemaSupermercado
                     MySqlCommand cmd =
                         new MySqlCommand(sql, Conexao.Abrir());
 
-                    cmd.Parameters.AddWithValue("@codigo", codigoSelecionado);
+                    cmd.Parameters.AddWithValue(
+                        "@codigo",
+                        codigoSelecionado);
 
                     cmd.ExecuteNonQuery();
 
@@ -276,6 +356,8 @@ namespace SistemaSupermercado
 
             txtPreco.Clear();
 
+            pbProduto.Image = null;
+
             codigoSelecionado = 0;
         }
 
@@ -284,9 +366,9 @@ namespace SistemaSupermercado
 
         }
 
-
         // botão limpar no form1 para cadastro de novo produto
         // pode ser utilizado para limpar os campos caso queira cadastrar um novo produto sem atualizar ou excluir o selecionado
+
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             LimparCampos();
@@ -297,29 +379,40 @@ namespace SistemaSupermercado
 
         }
 
-        //ADICIONAR E ALTERAR IMAGENS
+        // ADICIONAR E ALTERAR IMAGENS
+
         private string caminhoImagemSelecionada = "";
 
         private void SelecionarImagem()
         {
             // Cria a caixa de diálogo para escolher o arquivo
+
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 // Filtra para aparecer apenas arquivos de imagem comuns
-                ofd.Filter = "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
-                ofd.Title = "Selecione a imagem do produto";
+
+                ofd.Filter =
+                    "Arquivos de Imagem|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
+
+                ofd.Title =
+                    "Selecione a imagem do produto";
 
                 // Se o usuário clicou em "Abrir"
+
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     // Guarda o caminho completo do arquivo selecionado
+
                     caminhoImagemSelecionada = ofd.FileName;
 
                     // Carrega e exibe a imagem no PictureBox
-                    pbProduto.Image = Image.FromFile(caminhoImagemSelecionada);
+
+                    pbProduto.Image =
+                        Image.FromFile(caminhoImagemSelecionada);
                 }
             }
         }
+
         private void btnAdicionarImagem_Click(object sender, EventArgs e)
         {
             SelecionarImagem();
@@ -335,10 +428,9 @@ namespace SistemaSupermercado
             LimparCampos();
         }
 
-
-
         // TESTE DA CONEXAO COM O BANCO - Pode ser excluido
         // apenas para teste do banco antes de demais alterações
+
         private void btnTeste_Click(object sender, EventArgs e)
         {
             try
