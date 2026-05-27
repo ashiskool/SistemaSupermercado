@@ -120,11 +120,10 @@ Caso algum botão ou componente não funcione:
 
 ## Exemplos de eventos
 
-- Click → btnCadastrar_Click
-- Click → btnExcluir_Click
-- Click → btnAtualizar_Click
-- Click → btnFinalizar_Click
-- SelectedIndexChanged → cmbProdutos_SelectedIndexChanged
+- Falha No botão Cadastrar Click → btnCadastrar_Click
+- Falha no botão Excluir Click → btnExcluir_Click
+- Falha no Botão Atualizar cadastro Click → btnAtualizar_Click
+- Falha na integração das imagens, na aba pedido de vendas com SelectedIndexChanged → cmbProdutos_SelectedIndexChanged
 - CellClick → dgvProdutos_CellClick
 
 O evento `cmbProdutos_SelectedIndexChanged` é responsável por atualizar automaticamente a imagem do produto selecionado no PictureBox da tela de vendas.
